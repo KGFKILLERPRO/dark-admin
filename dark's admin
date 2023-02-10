@@ -7139,7 +7139,7 @@ AddCommand("netless", {"+netless"}, "dont let ur body parts fall when using cert
             Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
         Duration = 16;
 end)
-AddCommand("bruhs glitcher", {"+bruhsglitcher"}, "use bruhs glitcher[must be in r6][need swords]", {}, function(Caller, Args)
+AddCommand("bruhsglitcher", {"+bruhsglitcher"}, "use bruhs glitcher[must be in r6][need swords]", {}, function(Caller, Args)
     Utils.Notify(LocalPlayer, "command", "first do .R6 then do .glitcher")
 end)
 AddCommand("chatcontroller", {"+chatcontroller"}, "can control anyones chat by hiding in their body.", {}, function(Caller, Args)
