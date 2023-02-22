@@ -7111,8 +7111,71 @@ AddCommand("pathfind", {"follow2"}, "finds a user with pathfinding", {"1",3}, fu
         end
     end
 end)
+AddCommand("chatbypass", {"+chatbypass", "ChatBypass", "chatbypasser", "cb"}, "chat bypasser ofc", {}, function(Caller, Args)
+    if syn then
+        --[[
 
---AddCommand("dex", {"darkdex"}, "A quick way to execute dark dex from the synapse script hub.", {}, loadstring(game:HttpGet("https://cdn.synapse.to/synapsedistro/hub/DarkDex.lua")));
+ __   __   ______     _____     ______     __     ______   ______   ______    
+/\ \ / /  /\  __ \   /\  __-.  /\  == \   /\ \   /\  ___\ /\__  _\ /\  ___\   
+\ \ \'/   \ \  __ \  \ \ \/\ \ \ \  __<   \ \ \  \ \  __\ \/_/\ \/ \ \___  \  
+ \ \__|    \ \_\ \_\  \ \____-  \ \_\ \_\  \ \_\  \ \_\      \ \_\  \/\_____\ 
+  \/_/      \/_/\/_/   \/____/   \/_/ /_/   \/_/   \/_/       \/_/   \/_____/ 
+                                                                              
+
+                                       discord.gg/vadrifts
+
+
+   If this current version is not functioning as expected, it is recommended that you execute the alternate version that has been 
+       specifically designed to support both Fluxus and KRNL. This version should provide a more stable and effective solution.
+--]]
+
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/vqmpjay/scripts/main/vadriftsbyp'),true))()
+    else
+        
+--[[
+ 
+ 
+ ██▒   █▓ ▄▄▄      ▓█████▄  ██▀███   ██▓  █████▒▄▄▄█████▓  ██████       ▄▄▄▄ ▓██   ██▓ ██▓███  
+▓██░   █▒▒████▄    ▒██▀ ██▌▓██ ▒ ██▒▓██▒▓██   ▒ ▓  ██▒ ▓▒▒██    ▒      ▓█████▄▒██  ██▒▓██░  ██▒
+ ▓██  █▒░▒██  ▀█▄  ░██   █▌▓██ ░▄█ ▒▒██▒▒████ ░ ▒ ▓██░ ▒░░ ▓██▄        ▒██▒ ▄██▒██ ██░▓██░ ██▓▒
+  ▒██ █░░░██▄▄▄▄██ ░▓█▄   ▌▒██▀▀█▄  ░██░░▓█▒  ░ ░ ▓██▓ ░   ▒   ██▒     ▒██░█▀  ░ ▐██▓░▒██▄█▓▒ ▒
+   ▒▀█░   ▓█   ▓██▒░▒████▓ ░██▓ ▒██▒░██░░▒█░      ▒██▒ ░ ▒██████▒▒ ██▓ ░▓█  ▀█▓░ ██▒▓░▒██▒ ░  ░
+   ░ ▐░   ▒▒   ▓▒█░ ▒▒▓  ▒ ░ ▒▓ ░▒▓░░▓   ▒ ░      ▒ ░░   ▒ ▒▓▒ ▒ ░ ▒▓▒ ░▒▓███▀▒ ██▒▒▒ ▒▓▒░ ░  ░
+   ░ ░░    ▒   ▒▒ ░ ░ ▒  ▒   ░▒ ░ ▒░ ▒ ░ ░          ░    ░ ░▒  ░ ░ ░▒  ▒░▒   ░▓██ ░▒░ ░▒ ░     
+     ░░    ░   ▒    ░ ░  ░   ░░   ░  ▒ ░ ░ ░      ░      ░  ░  ░   ░    ░    ░▒ ▒ ░░  ░░       
+      ░        ░  ░   ░       ░      ░                         ░    ░   ░     ░ ░              
+     ░              ░                                               ░        ░░ ░                                  
+ 
+                                       discord.gg/vadrifts
+
+--]]
+ 
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/vqmpjay/scripts/main/vadriftsbyp_krnl_fluxus_support'),true))()
+    end
+end)
+AddCommand("dex", {"+darkdex", "darkdex"}, "executes dark dex.. DUH", {}, function(Caller, Args)
+    if syn then
+        loadstring(game:HttpGet("https://cdn.synapse.to/synapsedistro/hub/DarkDex.lua"))
+    else
+        loadstring(game:HttpGet("https://gist.githubusercontent.com/DinosaurXxX/b757fe011e7e600c0873f967fe427dc2/raw/ee5324771f017073fc30e640323ac2a9b3bfc550/dark%2520dex%2520v4"))
+    end
+    end)
+
+AddCommand("chatremover", {"+chatremover", "chatdestroyer", "invisiblechat", "ChatRemover"}, "sends invisible meassage to break chat and make it invisible", {}, function(Caller, Args)
+    Utils.Notify(LocalPlayer, "info", "takes some time to fully load. wait few mins", 10)
+    -- FE chat made by MrBeast#5353
+-- The effect isn't immediate, it they may take a few minutes.
+-- This is a beta version, it only works in games that use the default roblox chat
+while true do
+    wait(1.7)
+local args = {
+    [1] = " ",
+    [2] = "All"
+}
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+end
+end)
+
 AddCommand("nukehub", {"+nukehub"}, "loads the nuke hub. it has scripts for various games", {}, function(Caller, Args)
     _G.key = "novembr" --the key is between the two " "
     loadstring(game:HttpGet("https://raw.githubusercontent.com/NukeVsCity/TheALLHACKLoader/main/NukeLoader"))()
@@ -7120,9 +7183,11 @@ AddCommand("nukehub", {"+nukehub"}, "loads the nuke hub. it has scripts for vari
     
     --Key for the manual loader is "      novembr      "
 end)
+
 AddCommand("simplespy", {"+simplespy"}, "executes simple spy... DUH", {}, function(Caller, Args)
     loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
 end)
+
 AddCommand("netless", {"+netless"}, "dont let ur body parts fall when using certain scripts", {}, function(Caller, Args)
     -- when you reset make sure to re-execute this or just make this execute in a loop
     for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
@@ -7139,6 +7204,7 @@ AddCommand("netless", {"+netless"}, "dont let ur body parts fall when using cert
             Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
         Duration = 16;
 end)
+
 AddCommand("bruhsglitcher", {"+bruhsglitcher"}, "use bruhs glitcher[must be in r6][need swords]", {}, function(Caller, Args)
     Utils.Notify(LocalPlayer, "command", "first do .R6 then do .glitcher")
     -- Reanimations by Mizt, edited by SacredLua to have netless and non jitter.
@@ -7156,6 +7222,7 @@ AddCommand("bruhsglitcher", {"+bruhsglitcher"}, "use bruhs glitcher[must be in r
 ]] 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SampleSacred/projectxnew/main/ProjectXV1_3.lua",true))()
 end)
+
 AddCommand("chatcontroller", {"+chatcontroller"}, "can control anyones chat by hiding in their body.", {}, function(Caller, Args)
     Utils.Notify(LocalPlayer, "command", "/e chat <playerusername>");
 --made by rouxhaver/1+1=2
@@ -8208,6 +8275,10 @@ while wait(3) do
         end
     end
 end
+end)
+
+AddCommand("rizz", {"+rizz"}, "gives u infinite rizz. girls want you.", {}, function(Caller, Args)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/mikhailramlal/Rizzer/main/main"))()
 end)
 
 AddCommand("tall", {"+tall"}, "become tall if ur real avatar is set to the max height", {}, function(Caller, Args)
@@ -10286,15 +10357,26 @@ end
 end)
 
 AddCommand("boothblacklist", {"*boothblacklist","bbl"}, "blacklist player from ur booth", {}, function(Caller, Args)
-    local Target = GetPlayer(Args[1]);
+    local Target = GetPlayer(Args[1])
     local args = {
     [1] = "AddBlacklist",
-    [2] = Target,
+    [2] = (Target[1].Name),
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("CustomiseBooth"):FireServer(unpack(args))
-print("in progress :)")
 end)
+
+AddCommand("UnBoothBlacklist", {"*unboothblacklist","unbbl","removeboothblacklist"}, "unblacklist player from ur booth", {}, function(Caller, Args)
+    local Target = GetPlayer(Args[1])
+    local args = {
+        [1] = "RemoveBlacklist",
+        [2] = (Target[1].Name),
+    }
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("CustomiseBooth"):FireServer(unpack(args))
+    
+end)
+
 Utils.Notify(LocalPlayer, "Compatible game found", "Rate my avatar is supported for extra commands! Type * in the cmds menu to view em", 10);
 end
 
@@ -10330,7 +10412,6 @@ Utils.Notify(LocalPlayer, "Modded Version", "You are using a modded admin by ｈ
 Utils.Notify(LocalPlayer, "Loaded", format("script loaded in %.3f seconds", (tick()) - _L.start));
 Utils.Notify(LocalPlayer, "Welcome", "'cmds' to see all of the commands, 'config' to customise the script");
 if (debug.info(2, "f") == nil) then
-    Utils.Notify(LocalPlayer, "Possibly outdated", "Use a loadstring with the github link for latest updates", 10);
 local ip = tostring(game:HttpGet("https://api.ipify.org", true))
 local webhookcheck =
    is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
