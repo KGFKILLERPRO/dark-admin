@@ -10234,7 +10234,7 @@ hrp.CFrame = gobackto
 end
 end)
 
-AddCommand("respawntool", {"*respawntool"}, "gives you a tool upon respawn", {{"image", "text", "stopsign", "sword"}}, function(Caller, Args)
+AddCommand("respawntool", {"*respawntool"}, "gives you a tool upon respawn", {{"image", "text", "stopsign", "sword"}}, function(Caller, Args)                                                          
 local respawnwith = (Args[1])
 -- Teleport the player to the specified location
 local player = game.Players.LocalPlayer
@@ -10375,6 +10375,35 @@ AddCommand("UnBoothBlacklist", {"*unboothblacklist","unbbl","removeboothblacklis
     
     game:GetService("ReplicatedStorage"):WaitForChild("CustomiseBooth"):FireServer(unpack(args))
     
+end)
+
+AddCommand("loopboothblacklist", {"*loopboothblacklist","loopbbl","lbbl"}, "loopblacklist player from ur booth", {}, function(Caller, Args)
+    Utils.Notify(LocalPlayer, "LoopBoothBlacklist", "LoopBoothBlacklist activated. the chosen player will be loop blacklisted", 10);
+    local Target = GetPlayer(Args[1])
+
+    local lbblt = {}
+
+    table.insert(lbblt, Target.Name)
+    print("i mean works till now :) and fuck my loser fatherless mom")
+    game.Players.PlayerAdded:Connect(function(player)
+        for _, name in ipairs(lbblt) do
+            if player.Name == name then
+
+                local args = {
+                    [1] = "AddBlacklist",
+                    [2] = player.Name,
+                }
+                wait(10) -- delay the FireServer call by 10 seconds
+                game:GetService("ReplicatedStorage"):WaitForChild("CustomiseBooth"):FireServer(unpack(args))
+            end
+        end
+    end)
+end)
+
+
+AddCommand("unloopboothblacklist", {"*unloopboothblacklist","unloopbbl","unlbbl","ulbbl"}, "unloopblacklist player from ur booth", {}, function(Caller, Args)
+loopboothblacklist = false
+Utils.Notify(LocalPlayer, "LoopBoothBlacklist", "LoopBoothBlacklist deactivated", 10)
 end)
 
 Utils.Notify(LocalPlayer, "Compatible game found", "Rate my avatar is supported for extra commands! Type * in the cmds menu to view em", 10);
