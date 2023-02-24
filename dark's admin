@@ -1826,7 +1826,7 @@ Utils.TweenAllTrans = function(Object, Time)
         local IsImage = IsA(v, "ImageLabel") or IsA(v, "ImageButton")
         local IsScrollingFrame = IsA(v, "ScrollingFrame")
 
-        if (IsA(v, "GuiObject")) thenif (IsText) then
+        if (IsA(v, "GuiObject")) then if (IsText) then
                 Utils.Tween(v, "Sine", "Out", Time, {
                     TextTransparency = 1,
                     BackgroundTransparency = 1
@@ -5485,7 +5485,7 @@ AddCommand("fly", {}, "fly your character", {3}, function(Caller, Args, CEnv)
             Table1["A"] = Keys["A"] and -Speed or 0
             Table1["S"] = Keys["S"] and -Speed or 0
             Table1["D"] = Keys["D"] and Speed or 0
-            if ((Table1["W"] + Table1["S"]) ~= 0 or (Table1["A"] + Table1["D"]) ~= 0) thenBodyVelocity.Velocity = ((Camera.CoordinateFrame.lookVector * (Table1["W"] + Table1["S"])) + ((Camera.CoordinateFrame * CFrameNew(Table1["A"] + Table1["D"], (Table1["W"] + Table1["S"]) * 0.2, 0).p) - Camera.CoordinateFrame.p)) * 50
+            if ((Table1["W"] + Table1["S"]) ~= 0 or (Table1["A"] + Table1["D"]) ~= 0) then BodyVelocity.Velocity = ((Camera.CoordinateFrame.lookVector * (Table1["W"] + Table1["S"])) + ((Camera.CoordinateFrame * CFrameNew(Table1["A"] + Table1["D"], (Table1["W"] + Table1["S"]) * 0.2, 0).p) - Camera.CoordinateFrame.p)) * 50
             else
                 BodyVelocity.Velocity = Vector3New(0, 0.1, 0);
             end
