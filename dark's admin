@@ -6589,7 +6589,11 @@ game:GetService("NetworkClient").ConnectionAccepted:connect(function(peer)
      end
  end)
  
- AddCommand("autorefresh", {"*autorefresh", "autore"}, "auto respawns ur player when health lower than 30", {}, function(Caller, Args)
+ AddCommand("antivoid", {"+antivoid", "antivoiddeath"}, "does not let u die to void", {}, function(Caller, Args)
+    workspace.FallenPartsDestroyHeight = 0/1/0
+ end)
+
+ AddCommand("autorefresh", {"+autorefresh", "autore"}, "auto respawns ur player when health lower than 30", {}, function(Caller, Args)
     getgenv().autorefresh = true
     local player = game.Players.LocalPlayer
 while getgenv().autorefresh do
