@@ -6622,6 +6622,7 @@ end)
 
     if OnOffStatus == "off" then
         writefile(FilePath, "False")
+        Utils.Notify(LocalPlayer, "Successful", "wont auto execute now")
     elseif OnOffStatus == "on" then
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/KGFKILLERPRO/anti-chat-logger/main/anti%20chat%20logger"))()
@@ -6632,6 +6633,7 @@ Utils.Notify(LocalPlayer, "autoexec", "this function will now auto execute every
 
     if OnOffStatus ~= "on" and OnOffStatus ~= "off" then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/KGFKILLERPRO/anti-chat-logger/main/anti%20chat%20logger"))()
+    Utils.Notify(LocalPlayer, "Tip", "if u want it to auto execute everytime u execute script. type 'antichatlog on'")
     end
     
  end)
