@@ -6629,6 +6629,11 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/KGFKILLERPRO/anti-cha
 writefile(FilePath, "True")
 Utils.Notify(LocalPlayer, "autoexec", "this function will now auto execute everytime script gets executed. do off to turn autoexec off")
     end
+
+    if OnOffStatus ~= "on" and OnOffStatus ~= "off" then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KGFKILLERPRO/anti-chat-logger/main/anti%20chat%20logger"))()
+    end
+    
  end)
   
  AddCommand("chatbypass", {"+chatbypass", "ChatBypass", "chatbypasser", "cb"}, "chat bypasser ofc", {}, function(Caller, Args)
